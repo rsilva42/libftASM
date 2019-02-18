@@ -12,14 +12,39 @@
 
 NAME =		libfts.a
 ASMFLAGS =	-f macho64
-CCFLAGS =	-Wall -Wextra -Werror -L. -lfts #-g -fsanitize=address
+CCFLAGS =	-Wall -Wextra -Werror -L. -lfts
 SRCS =		sources/ft_isalpha.s\
 			sources/ft_bzero.s\
-			sources/ft_strcat.s
+			sources/ft_strcat.s\
+			sources/ft_isdigit.s\
+			sources/ft_isalnum.s\
+			sources/ft_isascii.s\
+			sources/ft_isprint.s\
+			sources/ft_toupper.s\
+			sources/ft_tolower.s\
+			sources/ft_puts.s\
+			sources/ft_strlen.s\
+			sources/ft_memset.s\
+			sources/ft_memcpy.s\
+			sources/ft_strdup.s\
+			sources/ft_cat.s
 OBJS =		objects/ft_isalpha.o\
 			objects/ft_bzero.o\
-			objects/ft_strcat.o
+			objects/ft_strcat.o\
+			objects/ft_isdigit.o\
+			objects/ft_isalnum.o\
+			objects/ft_isascii.o\
+			objects/ft_isprint.o\
+			objects/ft_toupper.o\
+			objects/ft_tolower.o\
+			objects/ft_puts.o\
+			objects/ft_strlen.o\
+			objects/ft_memset.o\
+			objects/ft_memcpy.o\
+			objects/ft_strdup.o\
+			objects/ft_cat.o
 TSTFILE =	main.c
+BNSFILE =	bonus.c
 
 all: $(NAME)
 
@@ -34,6 +59,7 @@ objects/%.o: sources/%.s
 test:
 	@/bin/rm -f libftasm_test
 	gcc $(CCFLAGS) $(TSTFILE) -o libftasm_test
+	gcc $(CCFLAGS) $(BNSFILE) -o bonus_test
 
 clean:
 	/bin/rm -f $(OBJS)

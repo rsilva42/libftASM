@@ -1,6 +1,6 @@
-global _ft_bzero
+global	_ft_bzero
 
-;void	bzero(void *s, size_t n)
+;void	ft_bzero(void *s, size_t n)
 
 section .text
 _ft_bzero:

@@ -1,6 +1,6 @@
 global	_ft_strcat
 
-;char	*strcat(char *s1, const char *s2)
+;char	*ft_strcat(char *s1, const char *s2)
 
 section .text
 _ft_strcat:
@@ -15,7 +15,7 @@ s1_end:
 
 s2_len:
 	inc			rcx					;increment counter
-	mov			dx, [rsi + rcx]	;get the value at rsi address
+	mov			dx, [rsi + rcx]		;get the value at rsi address
 	cmp			dx, 0				;compare byte to 0
 	jne			s2_len				;jump while byte is not 0
 	rep movsb						;copy from s2 to s1
