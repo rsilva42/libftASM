@@ -40,10 +40,8 @@ int		main(void)
 	printf("testing ft_bzero----------------------------------------\n");
 
 	char	*hello;
-
-	hello = malloc(sizeof(char) * 6);
 	
-	strcpy(hello, "Hello");
+	hello = strdup("Hello");
 	
 	printf("og:\t%s\n", hello);
 	write(1, "sys:\t", 5);
@@ -95,14 +93,27 @@ int		main(void)
 	char	*cat1, *cat2, *cat3;
 
 	cat1 = malloc(sizeof(char) * 9);
-	cat2 = malloc(sizeof(char) * 5);
 	cat3 = malloc(sizeof(char) * 9);
+	cat2 = strdup("cat2");
 	
 	strcpy(cat1, "cat1");
-	strcpy(cat2, "cat2");
 	strcpy(cat3, "cat3");
 	
 	printf("og:\t%s\n", cat1);
+	printf("sys:\t(returns) %s\t(sets dst to) %s\n", strcat(cat1, cat2), cat1);
+	printf("mine:\t(returns) %s\t(sets dst to) %s\n\n", ft_strcat(cat3, cat2), cat3);
+
+	strcpy(cat1, "dog1");
+	strcpy(cat2, "dog2");
+	strcpy(cat3, "dog3");
+
+	printf("sys:\t(returns) %s\t(sets dst to) %s\n", strcat(cat1, cat2), cat1);
+	printf("mine:\t(returns) %s\t(sets dst to) %s\n\n", ft_strcat(cat3, cat2), cat3);
+
+	strcpy(cat1, "");
+	strcpy(cat2, "pup2");
+	strcpy(cat3, "");
+
 	printf("sys:\t(returns) %s\t(sets dst to) %s\n", strcat(cat1, cat2), cat1);
 	printf("mine:\t(returns) %s\t(sets dst to) %s\n\n", ft_strcat(cat3, cat2), cat3);
 
@@ -198,21 +209,21 @@ int		main(void)
 
 	int		putsret, ft_putsret = 0;
 
-	write(1, "sys:\t", 5);
+	write(1, "sys:\t\t", 6);
 	putsret = puts("this is a sentence");
-	write(1, "mine:\t", 6);
+	write(1, "mine:\t\t", 7);
 	ft_putsret = ft_puts("this is a sentence");
 	printf("sys ret:\t%d\nmy ret:\t\t%d\n\n", putsret, ft_putsret);
 
-	write(1, "sys:\t", 5);
+	write(1, "sys:\t\t", 6);
 	putsret = puts("HeR3\t1s  aNOtheR 0Ne");
-	write(1, "mine:\t", 6);
+	write(1, "mine:\t\t", 7);
 	ft_putsret = ft_puts("HeR3\t1s  aNOtheR 0Ne");
 	printf("sys ret:\t%d\nmy ret:\t\t%d\n\n", putsret, ft_putsret);
 
-	write(1, "sys:\t", 5);
+	write(1, "sys:\t\t", 6);
 	putsret = puts(NULL);
-	write(1, "mine:\t", 6);
+	write(1, "mine:\t\t", 7);
 	ft_putsret = ft_puts(NULL);
 	printf("sys ret:\t%d\nmy ret:\t\t%d\n\n", putsret, ft_putsret);
 
@@ -227,17 +238,10 @@ int		main(void)
 
 	char	*set1, *set2, *set3, *set4;
 
-	set1 = malloc(sizeof(char) * 4);
-	set2 = malloc(sizeof(char) * 4);
-	set3 = malloc(sizeof(char) * 9);
-	set4 = malloc(sizeof(char) * 9);
-
-
-	strcpy(set1, "set");
-	strcpy(set2, "set");
-	strcpy(set3, "onlyhalf");
-	strcpy(set4, "onlyhalf");
-
+	set1 = strdup("set");
+	set2 = strdup("set");
+	set3 = strdup("onlyhalf");
+	set4 = strdup("onlyhalf");
 
 	printf("og:\t%s\n", set1);
 	printf("sys:\t(returns) %s\t(sets dst to) %s\n", memset(set1, '*', 3), set1);
@@ -257,17 +261,10 @@ int		main(void)
 
 	char	*cpy1, *cpy2, *cpy3, *cpy4;
 
-	cpy1 = malloc(sizeof(char) * 9);
-	cpy2 = malloc(sizeof(char) * 9);
-	cpy3 = malloc(sizeof(char) * 16);
-	cpy4 = malloc(sizeof(char) * 16);
-
-
-	strcpy(cpy1, "original");
-	strcpy(cpy2, "new copy");
-	strcpy(cpy3, "test number two");
-	strcpy(cpy4, "piece of cake!!");
-
+	cpy1 = strdup("original");
+	cpy2 = strdup("new copy");
+	cpy3 = strdup("test number two");
+	cpy4 = strdup("piece of cake!!");
 
 	printf("og:\t%s\n", cpy1);
 	printf("sys:\t(returns) %s\t(copys dst to) %s\n", memcpy(cpy1, cpy2, 8), cpy1);
@@ -289,9 +286,7 @@ int		main(void)
 
 	char	*string, *dup1, *dup2;
 
-	string = malloc(sizeof(char) * 11);
-
-	strcpy(string, "copy this!");
+	string = strdup("copy this!");
 
 	printf("og:\t%s\n", string);
 
@@ -316,6 +311,11 @@ int		main(void)
 
 	printf("\n-----printing ft_cat.s-----\n");
 	fd = open("sources/ft_cat.s", O_RDONLY);
+	ft_cat(fd);
+	close(fd);
+
+	printf("\n-----printing bonus.txt-----\n");
+	fd = open("bonus.txt", O_RDONLY);
 	ft_cat(fd);
 	close(fd);
 

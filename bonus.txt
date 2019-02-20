@@ -1,0 +1,6 @@
+bonus functions:
+	- ft_upperlower
+	- ft_strncat
+	- ft_strndup
+	- ft_memalloc
+	- ft_memchr

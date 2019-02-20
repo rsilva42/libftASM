@@ -13,8 +13,8 @@ _ft_puts:
 	xor		rcx, rcx				;clear counter
 
 s_len:
-	inc			rcx					;increment counter
 	mov			dl, [rsi + rcx]		;get the value at rdi address
+	inc			rcx					;increment counter
 	cmp			dl, 0x0				;compare byte to 0x0
 	jne			s_len				;jump while byte is not 0x0
 	mov			rdi, STDOUT			;set write stream

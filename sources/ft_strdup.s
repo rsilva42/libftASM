@@ -6,6 +6,9 @@ global	_ft_strdup
 
 section .text
 _ft_strdup:
+	push	rbp			;save stack base
+	mov		rbp, rsp	;set a new base at current pointer
+	sub		rsp, 16		;align the stack pointer
 	push	rdi			;save the value for later
 	xor		rax, rax	;clear to set scas to search null
 	xor		rcx, rcx	;clear count
@@ -19,4 +22,6 @@ _ft_strdup:
 	pop		rcx			;retrieve length form stack
 	pop		rsi			;retrieve s1 from stack
 	rep		movsb		;copy rsi to rdi
+	add		rsp, 16		;undo the changes to stack pointer
+	pop		rbp			;undo changes to stack base
 	ret

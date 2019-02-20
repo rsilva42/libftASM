@@ -27,7 +27,12 @@ SRCS =		sources/ft_isalpha.s\
 			sources/ft_memset.s\
 			sources/ft_memcpy.s\
 			sources/ft_strdup.s\
-			sources/ft_cat.s
+			sources/ft_cat.s\
+			sources/ft_upperlower.s\
+			sources/ft_strncat.s\
+			sources/ft_strndup.s\
+			sources/ft_memalloc.s\
+			sources/ft_memchr.s
 OBJS =		objects/ft_isalpha.o\
 			objects/ft_bzero.o\
 			objects/ft_strcat.o\
@@ -42,7 +47,12 @@ OBJS =		objects/ft_isalpha.o\
 			objects/ft_memset.o\
 			objects/ft_memcpy.o\
 			objects/ft_strdup.o\
-			objects/ft_cat.o
+			objects/ft_cat.o\
+			objects/ft_upperlower.o\
+			objects/ft_strncat.o\
+			objects/ft_strndup.o\
+			objects/ft_memalloc.o\
+			objects/ft_memchr.o
 TSTFILE =	main.c
 BNSFILE =	bonus.c
 
@@ -58,6 +68,7 @@ objects/%.o: sources/%.s
 
 test:
 	@/bin/rm -f libftasm_test
+	@/bin/rm -f bonus_test
 	gcc $(CCFLAGS) $(TSTFILE) -o libftasm_test
 	gcc $(CCFLAGS) $(BNSFILE) -o bonus_test
 
