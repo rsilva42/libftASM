@@ -11,6 +11,7 @@ char	*ft_strncat(char *s1, const char *s2, size_t n);
 char	*ft_strndup(const char *s1, size_t n);
 void	*ft_memalloc(size_t size);
 void	*ft_memchr(void *s, int c, size_t n);
+void	ft_putnbr(int n);
 
 int		main(void)
 {
@@ -111,6 +112,21 @@ int		main(void)
 
 	printf("og:\t%s\nsys:\t%s\nmine:\t%s\n\n", chr, memchr(chr, 'd', 17), ft_memchr(chr, 'd', 17));
 	printf("og:\t%s\nsys:\t%s\nmine:\t%s\n", chr, memchr(chr, '!', 17), ft_memchr(chr, '!', 17));
+
+	/*ft_putnbr tests*/
+	printf("testing ft_putnbr----------------------------------------\n");
+
+	ft_putnbr(42);
+	write(1, "\n\n", 2);
+
+	ft_putnbr(-20);
+	write(1, "\n\n", 2);
+
+	ft_putnbr(-2147483648);
+	write(1, "\n\n", 2);
+
+	ft_putnbr(2147483647);
+	write(1, "\n", 1);
 
 	return (0);
 }

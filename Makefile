@@ -32,7 +32,8 @@ SRCS =		sources/ft_isalpha.s\
 			sources/ft_strncat.s\
 			sources/ft_strndup.s\
 			sources/ft_memalloc.s\
-			sources/ft_memchr.s
+			sources/ft_memchr.s\
+			sources/ft_putnbr.s
 OBJS =		objects/ft_isalpha.o\
 			objects/ft_bzero.o\
 			objects/ft_strcat.o\
@@ -52,7 +53,8 @@ OBJS =		objects/ft_isalpha.o\
 			objects/ft_strncat.o\
 			objects/ft_strndup.o\
 			objects/ft_memalloc.o\
-			objects/ft_memchr.o
+			objects/ft_memchr.o\
+			objects/ft_putnbr.o
 TSTFILE =	main.c
 BNSFILE =	bonus.c
 

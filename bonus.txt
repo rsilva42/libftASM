@@ -4,3 +4,4 @@ bonus functions:
 	- ft_strndup
 	- ft_memalloc
 	- ft_memchr
+	- ft_putnbr
