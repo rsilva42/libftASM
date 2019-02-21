@@ -9,10 +9,14 @@ global	_ft_cat
 section .text
 _ft_cat:
 	push	rdi						;save fd for later
+	cmp		edi, 0x0				;check if fd is invalid
+	jl		return
 	mov		rax, READ_SYSCALL		;set syscall to read
 	lea		rsi, [rel buff.cont]	;load address of buffer
 	mov		rdx, buff.len			;set read buffer length
 	syscall							;read from file
+	cmp		rax, 0x0				;check if nothing was read
+	je		return					;jump back if there is content left
 
 	mov		rdx, rax				;set write length from read return value
 	mov		rax, WRITE_SYSCALL		;set syscall to write
@@ -23,6 +27,10 @@ _ft_cat:
 	pop		rdi						;retrieve fd from stack
 	cmp		rax, 0x0				;check if nothing was written
 	jne		_ft_cat					;jump back if there is content left
+	ret
+
+return:
+	pop		rdi						;clear the stack
 	ret
 
 section .data
